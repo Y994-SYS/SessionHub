@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36908.2 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SessionHub", "SessionHub\SessionHub.csproj", "{55EEE98F-A47A-4A44-8BFC-660EAD6331FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55EEE98F-A47A-4A44-8BFC-660EAD6331FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55EEE98F-A47A-4A44-8BFC-660EAD6331FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55EEE98F-A47A-4A44-8BFC-660EAD6331FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55EEE98F-A47A-4A44-8BFC-660EAD6331FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0EBF1C4-91DE-45A7-9C7D-7938CA31B10A}
+	EndGlobalSection
+EndGlobal
