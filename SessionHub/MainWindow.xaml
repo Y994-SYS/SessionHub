@@ -14,19 +14,16 @@
         FontFamily="Segoe UI">
 
     <Window.Resources>
-        <!-- Converter -->
         <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
         <converters:ProxyEnabledConverter x:Key="ProxyEnabledConverter"/>
         <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
 
-        <!-- Renkler -->
         <SolidColorBrush x:Key="DarkBackground" Color="#FF1E1E1E"/>
         <SolidColorBrush x:Key="PanelBackground" Color="#FF2D2D2D"/>
         <SolidColorBrush x:Key="AccentColor" Color="#FF007ACC"/>
         <SolidColorBrush x:Key="HoverColor" Color="#FF3E3E3E"/>
         <SolidColorBrush x:Key="TextGray" Color="#FFAAAAAA"/>
 
-        <!-- Buton Stili -->
         <Style x:Key="ModernButton" TargetType="Button">
             <Setter Property="Background" Value="#FF007ACC"/>
             <Setter Property="Foreground" Value="White"/>
@@ -37,8 +34,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border Background="{TemplateBinding Background}" 
-                                CornerRadius="4" Padding="{TemplateBinding Padding}">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -58,7 +54,6 @@
             </Setter>
         </Style>
 
-        <!-- Danger Button (Sil için) -->
         <Style x:Key="DangerButton" TargetType="Button" BasedOn="{StaticResource ModernButton}">
             <Setter Property="Background" Value="#FFDC3545"/>
             <Style.Triggers>
@@ -68,7 +63,6 @@
             </Style.Triggers>
         </Style>
 
-        <!-- TextBox Stili -->
         <Style x:Key="ModernTextBox" TargetType="TextBox">
             <Setter Property="Background" Value="#FF3E3E3E"/>
             <Setter Property="Foreground" Value="White"/>
@@ -79,25 +73,21 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
         </Style>
 
-        <!-- COMBOBOX -->
         <Style x:Key="ModernComboBox" TargetType="ComboBox">
             <Setter Property="Background" Value="#FF3E3E3E"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="BorderBrush" Value="#FF555555"/>
             <Setter Property="Padding" Value="5"/>
-
             <Setter Property="ItemContainerStyle">
                 <Setter.Value>
                     <Style TargetType="ComboBoxItem">
                         <Setter Property="Background" Value="#FF2D2D2D"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="Padding" Value="6"/>
-
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#FF007ACC"/>
                             </Trigger>
-
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#FF005A9E"/>
                             </Trigger>
@@ -105,26 +95,14 @@
                     </Style>
                 </Setter.Value>
             </Setter>
-
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ComboBox">
                         <Grid>
-                            <ToggleButton
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="1"
-                                IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
-                            <ContentPresenter
-                                Margin="6,2,25,2"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" TextElement.Foreground="White"/>
-                            <Popup
-                                IsOpen="{TemplateBinding IsDropDownOpen}"
-                                Placement="Bottom"
-                                AllowsTransparency="True"
-                                Focusable="False"
-                                PopupAnimation="Slide">
+                            <ToggleButton Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"/>
+                            <ContentPresenter Margin="6,2,25,2" VerticalAlignment="Center" HorizontalAlignment="Left" TextElement.Foreground="White"/>
+                            <Popup IsOpen="{TemplateBinding IsDropDownOpen}" Placement="Bottom" AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
                                 <Border Background="#FF2D2D2D" BorderBrush="#FF555555" BorderThickness="1">
                                     <ScrollViewer>
                                         <StackPanel IsItemsHost="True"/>
@@ -137,17 +115,9 @@
             </Setter>
         </Style>
 
-        <!-- CheckBox Stili -->
         <Style x:Key="ModernCheckBox" TargetType="CheckBox">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Margin" Value="0,10,0,5"/>
-        </Style>
-
-        <!-- ListView Stili -->
-        <Style x:Key="ProfileListView" TargetType="ListView">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Foreground" Value="White"/>
         </Style>
     </Window.Resources>
 
@@ -157,12 +127,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- SOL PANEL: Profil Listesi -->
+        <!-- SOL PANEL -->
         <Border Grid.Column="0" Background="{StaticResource PanelBackground}" Margin="10">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="2" BlurRadius="10" Opacity="0.3"/>
             </Border.Effect>
-
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -171,7 +140,6 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Başlık ve Lisans Butonu -->
                 <Grid Grid.Row="0" Margin="15,15,15,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -182,41 +150,27 @@
                         <TextBlock Text=" (DEMO)" FontSize="16" Foreground="#FFAAAAAA" 
                                    Visibility="{Binding IsDemoMode, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                     </StackPanel>
-                    <Button Grid.Column="1" Content="🔑 Lisans Ekle" 
-                            Style="{StaticResource ModernButton}" 
-                            Padding="10,5" FontSize="12"
-                            Command="{Binding AddLicenseCommand}"/>
+                    <Button Grid.Column="1" Content="🔑 Lisans Ekle" Style="{StaticResource ModernButton}" 
+                            Padding="10,5" FontSize="12" Command="{Binding AddLicenseCommand}"/>
                 </Grid>
 
-                <!-- Yeni Profil Ekleme -->
                 <Grid Grid.Row="1" Margin="15,0,15,10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0" 
-                             Style="{StaticResource ModernTextBox}"
+                    <TextBox Grid.Column="0" Style="{StaticResource ModernTextBox}"
                              Text="{Binding NewProfileName, UpdateSourceTrigger=PropertyChanged}"
-                             Height="35" Margin="0,0,10,0"
-                             VerticalContentAlignment="Center"/>
+                             Height="35" Margin="0,0,10,0" VerticalContentAlignment="Center"/>
                     <Button Grid.Column="1" Content="+" Width="35" Height="35"
-                            Style="{StaticResource ModernButton}"
-                            Command="{Binding AddProfileCommand}"
+                            Style="{StaticResource ModernButton}" Command="{Binding AddProfileCommand}"
                             FontSize="20" Padding="0"/>
                 </Grid>
 
-                <!-- Profil Listesi -->
-                <ListView Grid.Row="2" 
-                          Margin="15,0,15,0"
+                <ListView Grid.Row="2" Margin="15,0,15,0"
                           ItemsSource="{Binding Profiles}"
                           SelectedItem="{Binding SelectedProfile}"
-                          Background="Transparent"
-                          BorderThickness="0">
-                    <ListView.ItemsPanel>
-                        <ItemsPanelTemplate>
-                            <VirtualizingStackPanel/>
-                        </ItemsPanelTemplate>
-                    </ListView.ItemsPanel>
+                          Background="Transparent" BorderThickness="0">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Border Background="Transparent" Padding="10" CornerRadius="4">
@@ -225,28 +179,22 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    <TextBlock Grid.Row="0" Text="{Binding Name}" 
-                                               FontWeight="SemiBold" FontSize="14"/>
-                                    <TextBlock Grid.Row="1" Text="{Binding ProxyType}" 
-                                               Foreground="{StaticResource TextGray}" 
-                                               FontSize="11" Margin="0,2,0,0"/>
+                                    <TextBlock Grid.Row="0" Text="{Binding Name}" FontWeight="SemiBold" FontSize="14"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding ProxyType}" Foreground="{StaticResource TextGray}" FontSize="11" Margin="0,2,0,0"/>
                                 </Grid>
                             </Border>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <!-- Import/Export Butonları -->
                 <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="15,10,15,15">
-                    <Button Content="📥 Import" Style="{StaticResource ModernButton}" 
-                            Command="{Binding ImportProfilesCommand}" Margin="0,0,5,0" Padding="10,5"/>
-                    <Button Content="📤 Export" Style="{StaticResource ModernButton}" 
-                            Command="{Binding ExportProfilesCommand}" Padding="10,5"/>
+                    <Button Content="📥 Import" Style="{StaticResource ModernButton}" Command="{Binding ImportProfilesCommand}" Margin="0,0,5,0" Padding="10,5"/>
+                    <Button Content="📤 Export" Style="{StaticResource ModernButton}" Command="{Binding ExportProfilesCommand}" Padding="10,5"/>
                 </StackPanel>
             </Grid>
         </Border>
 
-        <!-- SAĞ PANEL: Profil Detayları -->
+        <!-- SAĞ PANEL -->
         <Grid Grid.Column="1" Margin="0,10,10,10">
             <Grid Visibility="{Binding SelectedProfile, Converter={StaticResource NullToVisibilityConverter}}">
                 <Grid.RowDefinitions>
@@ -255,95 +203,68 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <!-- Üst Bar -->
-                <Border Grid.Row="0" Background="{StaticResource PanelBackground}" 
-                        CornerRadius="4" Margin="0,0,0,10" Padding="20">
+                <Border Grid.Row="0" Background="{StaticResource PanelBackground}" CornerRadius="4" Margin="0,0,0,10" Padding="20">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <TextBlock Text="{Binding SelectedProfile.Name}" FontSize="24" 
-                                       FontWeight="Bold" Foreground="White"/>
+                            <TextBlock Text="{Binding SelectedProfile.Name}" FontSize="24" FontWeight="Bold" Foreground="White"/>
                             <TextBlock Text="{Binding SelectedProfile.CreatedAt, StringFormat='Oluşturulma: {0:dd.MM.yyyy HH:mm}'}" 
                                        Foreground="{StaticResource TextGray}" Margin="0,5,0,0"/>
                         </StackPanel>
-                        <Button Grid.Column="1" Content="🚀 TARAYICI AÇ" 
-                                Style="{StaticResource ModernButton}"
-                                Command="{Binding LaunchProfileCommand}"
-                                FontSize="14" FontWeight="Bold" Height="45" Padding="25,0"/>
+                        <Button Grid.Column="1" Content="🚀 TARAYICI AÇ" Style="{StaticResource ModernButton}"
+                                Command="{Binding LaunchProfileCommand}" FontSize="14" FontWeight="Bold" Height="45" Padding="25,0"/>
                     </Grid>
                 </Border>
 
-                <!-- Ayarlar Paneli -->
-                <Border Grid.Row="1" Background="{StaticResource PanelBackground}" 
-                        CornerRadius="4" Padding="20">
+                <Border Grid.Row="1" Background="{StaticResource PanelBackground}" CornerRadius="4" Padding="20">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel>
-                            <!-- BAĞLANTI AYARLARI -->
-                            <TextBlock Text="BAĞLANTI AYARLARI" FontWeight="Bold" 
-                                       Foreground="{StaticResource AccentColor}" Margin="0,0,0,15"/>
+                            <TextBlock Text="BAĞLANTI AYARLARI" FontWeight="Bold" Foreground="{StaticResource AccentColor}" Margin="0,0,0,15"/>
+
                             <TextBlock Text="Proxy Tipi" Margin="0,0,0,5" Foreground="{StaticResource TextGray}"/>
                             <ComboBox Height="35" 
-          IsEditable="True" 
-          IsReadOnly="True"
-          Text="{Binding SelectedProfile.ProxyType}"
-          Style="{StaticResource ModernComboBox}">
+                                      IsEditable="True" 
+                                      IsReadOnly="True"
+                                      Text="{Binding SelectedProfile.ProxyType, UpdateSourceTrigger=PropertyChanged}"
+                                      Style="{StaticResource ModernComboBox}">
                                 <ComboBoxItem Content="YOK"/>
                                 <ComboBoxItem Content="HTTP"/>
                                 <ComboBoxItem Content="SOCKS5"/>
                             </ComboBox>
+
                             <TextBlock Text="Proxy IP" Margin="0,15,0,5" Foreground="{StaticResource TextGray}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" 
-                                     Text="{Binding SelectedProfile.ProxyIp}" Height="35"
+                            <TextBox Style="{StaticResource ModernTextBox}" Text="{Binding SelectedProfile.ProxyIp}" Height="35"
                                      IsEnabled="{Binding SelectedProfile.ProxyType, Converter={StaticResource ProxyEnabledConverter}}"/>
 
                             <TextBlock Text="Proxy Port" Margin="0,15,0,5" Foreground="{StaticResource TextGray}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" 
-                                     Text="{Binding SelectedProfile.ProxyPort}" Height="35"
+                            <TextBox Style="{StaticResource ModernTextBox}" Text="{Binding SelectedProfile.ProxyPort}" Height="35"
                                      IsEnabled="{Binding SelectedProfile.ProxyType, Converter={StaticResource ProxyEnabledConverter}}"/>
 
-                            <TextBlock Text="Proxy Kullanıcı Adı (Opsiyonel)" Margin="0,15,0,5" 
-                                       Foreground="{StaticResource TextGray}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" 
-                                     Text="{Binding SelectedProfile.ProxyUsername}" Height="35"
+                            <TextBlock Text="Proxy Kullanıcı Adı (Opsiyonel)" Margin="0,15,0,5" Foreground="{StaticResource TextGray}"/>
+                            <TextBox Style="{StaticResource ModernTextBox}" Text="{Binding SelectedProfile.ProxyUsername}" Height="35"
                                      IsEnabled="{Binding SelectedProfile.ProxyType, Converter={StaticResource ProxyEnabledConverter}}"/>
 
-                            <TextBlock Text="Proxy Şifre (Opsiyonel)" Margin="0,15,0,5" 
-                                       Foreground="{StaticResource TextGray}"/>
-                            <PasswordBox Height="35" Background="#FF3E3E3E" 
-                                         Foreground="White" BorderBrush="#FF555555"
-                                         local:PasswordBoxHelper.BindPassword="True"
-                                         local:PasswordBoxHelper.BoundPassword="{Binding ProxyPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                                         IsEnabled="{Binding SelectedProfile.ProxyType, Converter={StaticResource ProxyEnabledConverter}}"/>
+                            <TextBlock Text="Proxy Şifre (Opsiyonel)" Margin="0,15,0,5" Foreground="{StaticResource TextGray}"/>
+                            <PasswordBox Height="35" Background="#FF3E3E3E" Foreground="White" BorderBrush="#FF555555"
+                                        local:PasswordBoxHelper.BindPassword="True"
+                                        local:PasswordBoxHelper.BoundPassword="{Binding ProxyPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        IsEnabled="{Binding SelectedProfile.ProxyType, Converter={StaticResource ProxyEnabledConverter}}"/>
 
                             <Separator Margin="0,20" Background="#FF444444"/>
-
-                            <!-- TARAYICI AYARLARI -->
-                            <TextBlock Text="TARAYICI AYARLARI" FontWeight="Bold" 
-                                       Foreground="{StaticResource AccentColor}" Margin="0,0,0,15"/>
+                            <TextBlock Text="TARAYICI AYARLARI" FontWeight="Bold" Foreground="{StaticResource AccentColor}" Margin="0,0,0,15"/>
                             <TextBlock Text="User Agent" Margin="0,0,0,5" Foreground="{StaticResource TextGray}"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" 
-                                     Text="{Binding SelectedProfile.UserAgent}" 
-                                     Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
-                            <TextBlock Text="Boş bırakırsanız varsayılan kullanılır" 
-                                       FontSize="11" Foreground="#FF666666" Margin="0,5,0,0"/>
+                            <TextBox Style="{StaticResource ModernTextBox}" Text="{Binding SelectedProfile.UserAgent}" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                            <TextBlock Text="Boş bırakırsanız varsayılan kullanılır" FontSize="11" Foreground="#FF666666" Margin="0,5,0,0"/>
 
                             <Separator Margin="0,20" Background="#FF444444"/>
-                            <Button Content="🍪 COOKIE IMPORT"
-                                    Style="{StaticResource ModernButton}"
-                                    Margin="0,10,0,0"
-                                    HorizontalAlignment="Left"
-                                    Command="{Binding ImportCookiesCommand}"/>
+                            <Button Content="🍪 COOKIE IMPORT" Style="{StaticResource ModernButton}" Margin="0,10,0,0" HorizontalAlignment="Left" Command="{Binding ImportCookiesCommand}"/>
 
-                            <!-- FINGERPRINT KORUMA -->
-                            <TextBlock Text="FINGERPRINT KORUMA" FontWeight="Bold" 
-                                       Foreground="{StaticResource AccentColor}" Margin="0,0,0,15"/>
+                            <TextBlock Text="FINGERPRINT KORUMA" FontWeight="Bold" Foreground="{StaticResource AccentColor}" Margin="0,0,0,15"/>
                             <TextBlock Text="Ekran Çözünürlüğü" Margin="0,0,0,5" Foreground="{StaticResource TextGray}"/>
-                            <ComboBox Height="35" 
-                                      Text="{Binding SelectedProfile.ScreenResolution}"
-                                      Style="{StaticResource ModernComboBox}">
+                            <ComboBox Height="35" Text="{Binding SelectedProfile.ScreenResolution}" Style="{StaticResource ModernComboBox}">
                                 <ComboBoxItem Content="1920,1080" IsSelected="True"/>
                                 <ComboBoxItem Content="1366,768"/>
                                 <ComboBoxItem Content="1440,900"/>
@@ -352,67 +273,41 @@
                             </ComboBox>
 
                             <TextBlock Text="Zaman Dilimi" Margin="0,15,0,5" Foreground="{StaticResource TextGray}"/>
-                            <ComboBox Height="35" 
-                                      Text="{Binding SelectedProfile.Timezone}"
-                                      Style="{StaticResource ModernComboBox}">
+                            <ComboBox Height="35" Text="{Binding SelectedProfile.Timezone}" Style="{StaticResource ModernComboBox}">
                                 <ComboBoxItem Content="Europe/Istanbul" IsSelected="True"/>
                                 <ComboBoxItem Content="America/New_York"/>
                                 <ComboBoxItem Content="Europe/London"/>
                                 <ComboBoxItem Content="Asia/Tokyo"/>
                             </ComboBox>
 
-                            <CheckBox Content="WebGL Spoofing Aktif" 
-                                      IsChecked="{Binding SelectedProfile.EnableWebGLSpoofing}"
-                                      Style="{StaticResource ModernCheckBox}"/>
-                            <TextBlock Text="WebGL parmak izini gizler" FontSize="11" 
-                                       Foreground="#FF666666" Margin="20,0,0,10"/>
-
-                            <CheckBox Content="Canvas Spoofing Aktif" 
-                                      IsChecked="{Binding SelectedProfile.EnableCanvasSpoofing}"
-                                      Style="{StaticResource ModernCheckBox}"/>
-                            <TextBlock Text="Canvas rendering gürültüsü ekler" FontSize="11" 
-                                       Foreground="#FF666666" Margin="20,0,0,10"/>
+                            <CheckBox Content="WebGL Spoofing Aktif" IsChecked="{Binding SelectedProfile.EnableWebGLSpoofing}" Style="{StaticResource ModernCheckBox}"/>
+                            <TextBlock Text="WebGL parmak izini gizler" FontSize="11" Foreground="#FF666666" Margin="20,0,0,10"/>
+                            <CheckBox Content="Canvas Spoofing Aktif" IsChecked="{Binding SelectedProfile.EnableCanvasSpoofing}" Style="{StaticResource ModernCheckBox}"/>
+                            <TextBlock Text="Canvas rendering gürültüsü ekler" FontSize="11" Foreground="#FF666666" Margin="20,0,0,10"/>
 
                             <Separator Margin="0,20" Background="#FF444444"/>
+                            <TextBlock Text="📝 NOTLAR" FontWeight="Bold" Foreground="{StaticResource AccentColor}" Margin="0,0,0,10"/>
+                            <TextBox Style="{StaticResource ModernTextBox}" Text="{Binding SelectedProfile.Notes}" Height="80" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+                            <TextBlock Text="Profil hakkında hatırlatma notları ekleyin" FontSize="11" Foreground="#FF666666" Margin="0,5,0,0"/>
 
-                            <TextBlock Text="📝 NOTLAR" FontWeight="Bold" 
-                                       Foreground="{StaticResource AccentColor}" Margin="0,0,0,10"/>
-                            <TextBox Style="{StaticResource ModernTextBox}" 
-                                     Text="{Binding SelectedProfile.Notes}" 
-                                     Height="80" TextWrapping="Wrap" AcceptsReturn="True"
-                                     VerticalScrollBarVisibility="Auto"/>
-                            <TextBlock Text="Profil hakkında hatırlatma notları ekleyin" 
-                                       FontSize="11" Foreground="#FF666666" Margin="0,5,0,0"/>
-
-                            <Button Content="🔌 PROXY TEST ET" 
-                                    Style="{StaticResource ModernButton}" 
-                                    Margin="0,15,0,0" HorizontalAlignment="Left"
-                                    Command="{Binding TestProxyCommand}"/>
+                            <Button Content="🔌 PROXY TEST ET" Style="{StaticResource ModernButton}" Margin="0,15,0,0" HorizontalAlignment="Left" Command="{Binding TestProxyCommand}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
 
-                <!-- Alt Butonlar -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                    <Button Content="💾 KAYDET" Style="{StaticResource ModernButton}" 
-                            Command="{Binding SaveProfileCommand}" Margin="0,0,10,0"/>
-                    <Button Content="🗑️ SİL" Style="{StaticResource DangerButton}" 
-                            Command="{Binding DeleteProfileCommand}" Margin="0,0,10,0"/>
-                    <Button Content="📄 KLONLA" Style="{StaticResource ModernButton}"
-                            Command="{Binding CloneProfileCommand}" Margin="0,0,10,0"/>
-                    <Button Content="📂 PROFİL KLASÖRÜ" Style="{StaticResource ModernButton}"
-                            Command="{Binding OpenProfileFolderCommand}" Margin="0,0,10,0"/>
-                    <Button Content="📦 PROFİL EXPORT" Style="{StaticResource ModernButton}"
-                            Command="{Binding ExportFullProfileCommand}" Margin="0,0,10,0"/>
+                    <Button Content="💾 KAYDET" Style="{StaticResource ModernButton}" Command="{Binding SaveProfileCommand}" Margin="0,0,10,0"/>
+                    <Button Content="🗑️ SİL" Style="{StaticResource DangerButton}" Command="{Binding DeleteProfileCommand}" Margin="0,0,10,0"/>
+                    <Button Content="📄 KLONLA" Style="{StaticResource ModernButton}" Command="{Binding CloneProfileCommand}" Margin="0,0,10,0"/>
+                    <Button Content="📂 PROFİL KLASÖRÜ" Style="{StaticResource ModernButton}" Command="{Binding OpenProfileFolderCommand}" Margin="0,0,10,0"/>
+                    <Button Content="📦 PROFİL EXPORT" Style="{StaticResource ModernButton}" Command="{Binding ExportFullProfileCommand}" Margin="0,0,10,0"/>
                 </StackPanel>
             </Grid>
 
-            <!-- Boş Seçim Durumu -->
             <Border Background="{StaticResource PanelBackground}" CornerRadius="4"
                     Visibility="{Binding SelectedProfile, Converter={StaticResource NullToVisibilityConverter}, ConverterParameter=True}">
-                <TextBlock Text="Profil seçin veya yeni profil oluşturun" 
-                           HorizontalAlignment="Center" VerticalAlignment="Center"
-                           Foreground="{StaticResource TextGray}" FontSize="16"/>
+                <TextBlock Text="Profil seçin veya yeni profil oluşturun" HorizontalAlignment="Center" VerticalAlignment="Center"
+                          Foreground="{StaticResource TextGray}" FontSize="16"/>
             </Border>
         </Grid>
     </Grid>
